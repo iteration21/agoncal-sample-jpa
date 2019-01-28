@@ -5,8 +5,9 @@
              version="2.1">
 
     <persistence-unit name="sampleJPALoadScriptSourcePU" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-      <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        <!-- INFO,i21 jedną linią ustalamy której implementacji uzyjemy -->
+        <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
       <class>org.agoncal.sample.loadScriptSource.Author</class>
         <class>org.agoncal.sample.loadScriptSource.Book</class>
         <class>org.agoncal.sample.loadScriptSource.Category</class>
@@ -21,7 +22,9 @@
             <property name="javax.persistence.schema-generation.scripts.create-target" value="sampleJPALoadScriptSourceCreate.ddl"/>
             <property name="javax.persistence.schema-generation.scripts.drop-target" value="sampleJPALoadScriptSourceDrop.ddl"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <!--INFO,i21 in memory derby DB, bez usera/hasla-->
             <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:sampleJPALoadScriptSourceDB;create=true"/>
+            <!--INFO,i21 skąd importujemy dane? -->
             <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>
         </properties>
     </persistence-unit>
